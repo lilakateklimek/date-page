@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notre date 💕</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fdf2f5;
+      font-family: 'Lato', sans-serif;
+      overflow: hidden;
+    }
+
+    .confetti-wrap {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .conf {
+      position: absolute;
+      top: -20px;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      animation: conffall linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes conffall {
+      0%   { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 60px 40px;
+    }
+
+    .top-emoji {
+      font-size: 52px;
+      margin-bottom: 28px;
+      animation: pop 0.5s ease;
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(0.5); opacity: 0; }
+      80%  { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .intro {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 22px;
+      color: #b04070;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      animation: fadein 0.8s ease 0.2s both;
+    }
+
+    /* ====================================================
+       LA DATE — c'est ici que tu fais tes modifications !
+       Ligne 1 : le jour + mois   (ex: "Samedi 14 juin")
+       Ligne 2 : l'année          (ex: "2025")
+       Ligne 3 : l'heure          (ex: "à 19h30")
+       Supprime les lignes dont tu n'as pas besoin.
+    ==================================================== */
+
+    .date-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 80px;        /* ← taille du texte principal */
+      font-weight: 700;
+      color: #9b2c52;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      animation: fadein 0.8s ease 0.4s both;
+    }
+
+    .date-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 400;
+      color: #c0395f;
+      margin-bottom: 20px;
+      animation: fadein 0.8s ease 0.6s both;
+    }
+
+    .date-time {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 28px;
+      color: #b04070;
+      margin-bottom: 40px;
+      animation: fadein 0.8s ease 0.7s both;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1.5px;
+      background: #e8a0b8;
+      margin: 0 auto 32px;
+      animation: fadein 0.8s ease 0.8s both;
+    }
+
+    .message {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: #c0395f;
+      animation: fadein 0.8s ease 1s both;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confetti-wrap" id="confetti"></div>
+
+  <div class="container">
+    <div class="top-emoji">🎉💕🎉</div>
+
+    <div class="intro">Our date is</div>
+
+    <!-- ↓ MODIFIE ICI : le jour et le mois -->
+    <div class="date-main">Saturday, July 19</div>
+
+    <!-- ↓ MODIFIE ICI : l'année (supprime cette ligne si tu veux) -->
+    <div class="date-year">2025</div>
+
+    <!-- ↓ MODIFIE ICI : l'heure (supprime cette ligne si tu veux) -->
+    <div class="date-time">at 7:30 pm</div>
+
+    <div class="divider"></div>
+
+    <!-- ↓ MODIFIE ICI : le petit message du bas -->
+    <div class="message">I can't wait 💖</div>
+  </div>
+
+  <script>
+    const colors = ['#f48fb1','#f06292','#e91e63','#ce93d8','#fff176','#ffe082','#ffffff'];
+    const wrap = document.getElementById('confetti');
+    for (let i = 0; i < 60; i++) {
+      const c = document.createElement('div');
+      c.classList.add('conf');
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.animationDuration = (3 + Math.random() * 6) + 's';
+      c.style.animationDelay = (Math.random() * 5) + 's';
+      c.style.width = (6 + Math.random() * 8) + 'px';
+      c.style.height = (6 + Math.random() * 8) + 'px';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      wrap.appendChild(c);
+    }
+  </script>
+
+</body>
+</html>
